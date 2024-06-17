@@ -1,34 +1,43 @@
 import random
 
+
 print("NUMBER_GUESSING_GAME")
 print("WELCOME\n")
 
-lives = 6 # number of guess for the user
+life = 6
+computer = random.randint(1, 100)
+print("The random_number has chosen number from 1 to 100")
 
-computer = random.randint(1, 100) # you could set the range to your liking
-print("The computer has chosen number from 1 to 100")
 
-
-def guessing(lives, computer): # guess the number
-    print(f"you have {lives} lives, Good Luck!!")
-    while lives > 0 :
-        user = int(input("\nguess the number\n-->\t"))
-        if user < computer:
-            print("Your gues is too low!!")
-            lives -= 1
-            print(f"Life remaining {lives}")
-        elif user > computer:
-            print("Your guess is too high!!")
-            lives -= 1
-            print(f"Life remaining {lives}")
-        else:
-            print("Your guess is corret!!")
-            print(f"You won with {lives} remaining lives")
-            break
-
-    if lives == 0: # Stops the game if you run out of lives
+def guessing(number_life, random_number):
+    print(f"you have {number_life} lives, Good Luck!!")
+    while number_life > 0:
+        user = input("\nguess the number\n-->\t")
+        if check_user(user):
+            user = int(user)
+            if user < random_number:
+                print("Your gues is too low!!")
+                number_life -= 1
+                print(f"Life remaining {number_life}")
+            elif user > random_number:
+                print("Your guess is too high!!")
+                number_life -= 1
+                print(f"Life remaining {number_life}")
+            else:
+                print("Your guess is correct!!")
+                print(f"You won with {number_life} remaining lives")
+                break
+    if number_life == 0:
         print("\nYou have lost!!")
-        print(f"The number was {computer}")
+        print(f"The number was {random_number}")
 
-guessing(lives, computer)
 
+def check_user(user):
+    for char in user:
+        if not char.isdigit():
+            print("You entered a wrong value")
+            return False
+    return True
+
+
+guessing(life, computer)
