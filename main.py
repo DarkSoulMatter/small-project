@@ -3,7 +3,7 @@ import random
 print("NUMBER_GUESSING_GAME")
 print("WELCOME\n")
 
-lives = 6
+lives = 6 # number of guess for the user
 
 computer = random.randint(1, 100) # you could set the range to your liking
 print("The computer has chosen number from 1 to 100")
