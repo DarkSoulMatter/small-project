@@ -1,2 +1,3 @@
 # small-project
-number guessing game 
+number guessing game by implementing while loop 
+
